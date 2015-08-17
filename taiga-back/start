@@ -5,9 +5,12 @@ bash /usr/local/taiga/configure
 cd /usr/local/taiga/taiga-back/
 
 python manage.py collectstatic --noinput
+python manage.py migrate --noinput
 python manage.py loaddata initial_user
 python manage.py loaddata initial_project_templates
 python manage.py loaddata initial_role
+python manage.py migrate taiga_contrib_letschat
+python manage.py migrate taiga_contrib_gogs
 
 echo "Waiting for Postgresql to be available..."
 while ! nc -z $POSTGRES_PORT_5432_TCP_ADDR 5432; do

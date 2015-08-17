@@ -26,7 +26,9 @@ RUN \
 ADD ./configure /usr/local/taiga/configure
 ADD ./start /usr/local/taiga/start
 RUN chmod +x /usr/local/taiga/configure /usr/local/taiga/start
-
+ADD https://raw.githubusercontent.com/taigaio/taiga-contrib-letschat/master/front/dist/letschat.js /usr/local/taiga/taiga-front-dist/dist/js/
+ADD https://raw.githubusercontent.com/taigaio/taiga-contrib-gogs/stable/front/dist/gogs.js /usr/local/taiga/taiga-front-dist/dist/js/
+RUN cd /usr/local/taiga/taiga-front-dist/dist/js/ && chmod 644 *.js
 EXPOSE 80 443
 
 CMD ["/usr/local/taiga/start"]

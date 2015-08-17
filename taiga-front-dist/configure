@@ -6,6 +6,7 @@ upstream taiga-back {
   server ${TAIGABACK_PORT_8000_TCP_ADDR}:8000;
 }
 
+
 EOL
 
 # Configure HTTP or HTTPS for nginx proxy
@@ -31,7 +32,7 @@ cat > /usr/local/taiga/taiga-front-dist/dist/js/conf.json <<EOL
   "termsOfServiceUrl": null,
   "maxUploadFileSize": null,
   "gitHubClientId": null,
-  "contribPlugins": [ ]
+  "contribPlugins": ["/js/letschat.js","/js/gogs.js"]
 }
 
 EOL

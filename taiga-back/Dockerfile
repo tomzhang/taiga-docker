@@ -18,9 +18,13 @@ RUN \
   cd /usr/local/taiga/taiga-back && \
   git checkout stable && \
   pip install -r requirements.txt && \
+  pip install taiga-contrib-gogs && \
   touch /usr/local/taiga/taiga-back/settings/dockerenv.py && \
   touch /usr/local/taiga/circus.ini
 
+RUN git clone https://github.com/taigaio/taiga-contrib-letschat.git /usr/local/taiga/taiga-letschat && \
+  cd /usr/local/taiga/taiga-letschat/back && pip install .
+  
 # Add Taiga Configuration
 ADD ./local.py /usr/local/taiga/taiga-back/settings/local.py
 
